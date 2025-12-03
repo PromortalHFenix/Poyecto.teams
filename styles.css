@@ -1,0 +1,340 @@
+:root {
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --neon-red: #ff003c;
+    --neon-glow: 0 0 10px rgba(255, 0, 60, 0.7), 0 0 20px rgba(255, 0, 60, 0.5);
+    --transition-speed: 0.4s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- HEADER --- */
+header {
+    width: 95%;
+    margin: 20px auto;
+    border: 2px solid white;
+    border-radius: 50px;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-circle {
+    width: 40px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    background: white;
+    color: black;
+}
+
+.header-controls {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.neon-icon {
+    cursor: pointer;
+    transition: var(--transition-speed);
+    color: var(--neon-red);
+    filter: drop-shadow(0 0 5px var(--neon-red));
+}
+
+.neon-icon:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 15px var(--neon-red));
+}
+
+svg {
+    width: 30px;
+    height: 30px;
+    fill: none;
+    stroke: var(--neon-red);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* --- MAIN CONTAINER --- */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+/* --- SECCIONES (PÁGINAS) --- */
+.section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: translateY(20px);
+}
+
+.section.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+h1 {
+    font-size: 4rem;
+    text-align: center;
+    line-height: 1.1;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+}
+
+.projects-title {
+    font-size: 3rem; 
+    margin-bottom: 30px;
+}
+
+/* --- VISTA 1: INICIO --- */
+.btn-start {
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    padding: 15px 60px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-start:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 20px rgba(255,255,255,0.5);
+    transform: scale(1.05);
+}
+
+/* --- VISTA 2: SELECCIÓN DE CURSOS --- */
+.courses-container {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.course-card {
+    width: 200px;
+    height: 200px;
+    border: 3px solid white;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: black;
+    position: relative;
+}
+
+.course-card:hover {
+    transform: scale(1.15) !important;
+    border-color: var(--neon-red);
+    color: var(--neon-red);
+    box-shadow: 0 0 30px rgba(255, 0, 60, 0.4), inset 0 0 20px rgba(255, 0, 60, 0.2);
+    z-index: 10;
+}
+
+/* --- VISTA 3: VOTACIÓN --- */
+.vote-options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.vote-btn {
+    padding: 20px;
+    border: 2px solid var(--neon-red);
+    background: transparent;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.vote-btn:hover, .vote-btn.selected {
+    background: var(--neon-red);
+    box-shadow: var(--neon-glow);
+}
+
+.vote-info {
+    margin-top: 20px; 
+    font-size: 0.9rem; 
+    opacity: 0.7;
+}
+
+/* --- MENU LATERAL --- */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.95);
+    z-index: 200;
+    transition: width 0.5s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid #333;
+}
+
+.menu-overlay.open {
+    width: 100%;
+}
+
+@media(min-width: 768px) {
+    .menu-overlay.open {
+        width: 400px;
+    }
+}
+
+.close-menu {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--neon-red);
+}
+
+.menu-links {
+    list-style: none;
+    text-align: center;
+}
+
+.menu-links li {
+    margin: 30px 0;
+}
+
+.menu-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.3s;
+    position: relative;
+}
+
+.menu-links a:hover {
+    color: var(--neon-red);
+    text-shadow: 0 0 10px var(--neon-red);
+}
+
+/* --- MODAL --- */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: #111;
+    border: 2px solid var(--neon-red);
+    padding: 40px;
+    border-radius: 20px;
+    z-index: 300;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    box-shadow: 0 0 50px rgba(0,0,0,0.9);
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal h2 {
+    color: var(--neon-red);
+    margin-bottom: 20px;
+}
+
+.modal p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.close-modal-btn {
+    margin-top: 20px;
+    padding: 10px 30px;
+    background: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* Animación de fondo */
+.bg-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 70%);
+}

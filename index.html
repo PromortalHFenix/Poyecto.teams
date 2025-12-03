@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos Teams 4ºESO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="bg-gradient"></div>
+
+    <header>
+        <div class="logo-container">
+            <div class="logo-circle">
+                <img src="https://via.placeholder.com/30x30/fff/000?text=IES" alt="IES" style="border-radius: 50%;">
+            </div>
+        </div>
+        <div class="header-controls">
+            <div class="neon-icon" id="heart-btn" title="Ver mi voto">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+            </div>
+            <div class="neon-icon" id="menu-btn">
+                <svg viewBox="0 0 24 24">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="landing" class="section active">
+            <h1>PROYECTOS<br>TEAMS 4ºESO</h1>
+            <button class="btn-start" onclick="goToSection('selection')">COMENZAR</button>
+        </section>
+
+        <section id="selection" class="section">
+            <h1 class="projects-title">PROYECTOS TEAMS 4ºESO</h1>
+            <div class="courses-container">
+                <div class="course-card" onclick="alert('Abriendo proyectos de 4ºA...')">4ºA</div>
+                <div class="course-card" onclick="alert('Abriendo proyectos de 4ºB...')">4ºB</div>
+                <div class="course-card" onclick="alert('Abriendo proyectos de 4ºC...')">4ºC</div>
+            </div>
+        </section>
+
+        <section id="voting" class="section">
+            <h1 style="color: var(--neon-red);">VOTA POR TU FAVORITO</h1>
+            <div class="vote-options">
+                <button class="vote-btn" onclick="vote('4ºA')">Curso 4ºA</button>
+                <button class="vote-btn" onclick="vote('4ºB')">Curso 4ºB</button>
+                <button class="vote-btn" onclick="vote('4ºC')">Curso 4ºC</button>
+            </div>
+            <p class="vote-info">Selecciona un curso para registrar tu voto.</p>
+        </section>
+    </main>
+
+    <div class="menu-overlay" id="menu-overlay">
+        <div class="close-menu" onclick="toggleMenu()">✕</div>
+        <ul class="menu-links">
+            <li><a href="#" onclick="menuAction('courses')">PROYECTOS CURSOS</a></li>
+            <li><a href="#" onclick="menuAction('vote')">VOTA POR TU FAVORITO</a></li>
+            <li><a href="#" onclick="menuAction('credits')">HECHO POR</a></li>
+        </ul>
+    </div>
+
+    <div class="modal" id="info-modal">
+        <h2 id="modal-title">Título</h2>
+        <p id="modal-text">Texto informativo.</p>
+        <button class="close-modal-btn" onclick="closeModal()">Cerrar</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
